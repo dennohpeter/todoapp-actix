@@ -1,3 +1,4 @@
+use serde::Serialize;
 use tokio_pg_mapper_derive::PostgresMapper;
 
 #[derive(serde::Serialize)]
@@ -19,4 +20,14 @@ pub struct TodoItem {
     pub title: String,
     pub completed: bool,
     pub list_id: i32,
+}
+
+#[derive(serde::Deserialize)]
+pub struct CreateTodoList {
+    pub title: String,
+}
+
+#[derive(Serialize)]
+pub struct ResultResponse {
+    pub success: bool,
 }
